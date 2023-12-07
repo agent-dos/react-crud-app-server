@@ -6,12 +6,13 @@ const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+const MONGODB_ATLAS_URL = process.env.MONGODB_ATLAS_URL || 'mongodb://127.0.0.1:27017/reactcrudapp';
 
 app.use(bodyParser.json());
 app.use(cors());
 
 const prepareModels = async () => {
-    await mongoose.connect('mongodb://127.0.0.1:27017/reactcrudapp');
+    await mongoose.connect(MONGODB_ATLAS_URL);
 
     // Schemas
     const todoSchema = new mongoose.Schema({
